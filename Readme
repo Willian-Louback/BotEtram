@@ -1,0 +1,3 @@
+Use o comando "npm init -y", este comando vai criar o arquivo package.json e deixar tudo prontinho.
+
+User o comando "npm i discord.js --save", este comando vai baixar a biblioteca do discord. (node_modules && package-lock.json)
