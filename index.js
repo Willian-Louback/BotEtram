@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const chalk = require('chalk');  //apenas para estilizar//
 //const { token } = require('./config.json');
 
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
@@ -7,7 +8,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const config = require("./config.json");
 
 client.on(Events.ClientReady, () => {
-    console.log(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`);
+    console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es)`);
     //myfunction();
 });
@@ -48,7 +49,7 @@ for (const file of commandFiles) {
 	if ('data' in command && 'execute' in command) {
 		client.commands.set(command.data.name, command);
 	} else {
-		console.log(`[Aviso] O comando ${filePath} está faltando, precisa de "data" ou "execute".`);
+		console.log(chalk.redBright(`[Aviso]`), `O comando em ${filePath} está precisando de algo, tente adicionar "data" ou "execute".`);
 	}
 }
 
