@@ -14,21 +14,21 @@ client.on(Events.ClientReady, () => {
 });
 
 client.on(Events.GuildCreate, guild => {
-    console.log(`Bot entrou no servidor: ${guild.name}.`);
+    console.log(chalk.magenta(`Bot entrou no servidor: "${guild.name}".`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es)`);
 });
 
 client.on(Events.GuildDelete, guild => {
-    console.log(`O bot foi removido do servidor: ${guild.name}.`);
+    console.log(chalk.magenta(`O bot foi removido do servidor: "${guild.name}".`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es)`);
 });
 
 client.on(Events.ChannelDelete, canal => {
-    console.log(`O canal foi deletado: ${canal.name}.`);
+    console.log(chalk.blue(`O canal foi deletado: "${canal.name}".`));
 });
 
 client.on(Events.ChannelCreate, canal => {
-    console.log(`O canal foi criado: ${canal.name}.`);
+    console.log(chalk.blue(`O canal foi criado: "${canal.name}".`));
 });
 
 /*client.on(Events.InteractionCreate, () => {

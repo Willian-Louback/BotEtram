@@ -79,10 +79,50 @@ module.exports = {
             const height = data.height / 10;
             const weight = data.weight / 10;
             const types = data.types;
+            let color = '#FF0043';
+            types.map((item)=>{
+                let type;
+                if (item.slot == 1){
+                    type = item.type.name;  
+                }
+                if(type == 'grass'){
+                    color = 'Green';
+                } else if (type == 'fire'){
+                    color = '#FF0043';
+                } else if(type == "water"){
+                    color = 'Blurple';
+                } else if (type == 'poison' ){
+                    color = 'Purple';
+                } else if(type == 'ghost'){
+                    color = 'DarkPurple';
+                } else if(type == 'electric'){
+                    color = 'Yellow';
+                } else if(type == 'psychic' || type == 'fairy'){
+                    color = 'LuminousVividPink';
+                } else if(type == 'rock'){
+                    color = 'DarkerGrey';
+                } else if(type == 'steel' || type == "flying"){
+                    color = 'LightGrey';
+                } else if (type == 'bug'){
+                    color = 'DarkGreen';
+                } else if (type == 'dark'){
+                    color = '#000000';
+                } else if (type == "dragon"){
+                    color = 'Orange';
+                } else if (type == "fighting"){
+                    color = '#800000';
+                } else if (type == "ground"){
+                    color = '#964B00';
+                } else if (type == 'ice'){
+                    color = '#00FFFF';
+                } else if (type == 'normal'){
+                    color = '#ffffff';
+                }
+            })
 
             if (650 <= id && id <= 898 && shiny != true){
                 const embedPokemonStatic = new EmbedBuilder()
-                    .setColor('#FF0043')
+                    .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
                     //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
@@ -99,7 +139,7 @@ module.exports = {
                 
             } else if(id > 898 && shiny != true || id > 898 && shiny == true) {
                 const embedPokemonNoSprite = new EmbedBuilder()
-                    .setColor('#FF0043')
+                    .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
                     //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
@@ -115,7 +155,7 @@ module.exports = {
                 await interaction.followUp(`Este pokémon ainda não possui sprit!`);
             } else if(shiny != true) {
                 const embedPokemonAnimated = new EmbedBuilder()
-                    .setColor('#FF0043')
+                    .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
                     //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
@@ -127,11 +167,10 @@ module.exports = {
                     .setTimestamp()
                     .setFooter({ text: `${interaction.user.username}`, iconURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif' });
                 await interaction.reply({embeds: [embedPokemonAnimated] });
-                console.log(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
             }
             if(id >= 1 && id <= 649 && shiny == true){
                 const embedPokemonAnimatedShiny = new EmbedBuilder()
-                    .setColor('#FF0043')
+                    .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
                     //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
@@ -147,7 +186,7 @@ module.exports = {
                 await interaction.reply({embeds: [embedPokemonAnimatedShiny] });
             } else if(id >= 650 && id <= 898 && shiny == true){
                 const embedPokemonStaticShiny = new EmbedBuilder()
-                    .setColor('#FF0043')
+                    .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
                     //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
