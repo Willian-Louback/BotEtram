@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 require('dotenv').config();
 //const bot = require('../config.json'); add .env
-const { pokemonList1, pokemonList2, pokemonList3 } = require('../Events/lista');
+const { pokemonList1, pokemonList2, pokemonList3 } = require('../lista');
 const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
