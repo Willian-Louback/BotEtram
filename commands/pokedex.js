@@ -66,13 +66,14 @@ module.exports = {
             console.log(chalk.redBright("--------------------------------------------------"));
             console.log(chalk.red(`[Error] Pokémon não encontrado!\n`)+
             chalk.magenta(`Procura do usuário:`), chalk.cyan(`"${resposta}".\n`)+
+            chalk.magenta(`Usuário:`), chalk.cyan(`"${interaction.user.username}".\n`)+
             chalk.magenta(`Link:`), chalk.cyan(`"https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}".\n`)+
             chalk.magenta(`Código do erro:`), chalk.cyan(`${link.status}.\n`)+
             chalk.magenta(`Texto do erro:`), chalk.cyan(`${link.statusText}.\n`)+
             chalk.magenta(`Shiny:`), chalk.cyan(`${shiny}.`));
             console.log(chalk.redBright("--------------------------------------------------"));
             await interaction.reply({content: `Pokémon não encontrado!`, 
-                 files: [attachment]});
+                 files: [attachment], ephemeral: true});
         } else {
             const data = await link.json();
             const id = data.id;
