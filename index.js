@@ -69,7 +69,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}*/							//Só para agilizar caso eu precise.
 
 	if (!command) {
-		console.error(`Nenhum comando correspondente à "${interaction.commandName}" foi encontrado.`);
+		console.error(chalk.redBright(`Nenhum comando correspondente à "${interaction.commandName}" foi encontrado.`));
 		return;
 	}
 

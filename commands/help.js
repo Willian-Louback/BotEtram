@@ -32,7 +32,7 @@ module.exports = {
               lista3 = pokemonList;
             });
           await interaction.deferReply({ephemeral: true});
-          await wait (5000);
+          await wait (7000);
           const embedPokemon = new EmbedBuilder()
               .setColor('#FF0043')
               .setTitle('Pokédex')

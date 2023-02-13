@@ -1,6 +1,13 @@
 const { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
 const chalk = require('chalk');  //apenas para estilizar//
+const axios = require('axios'); /*atualizando para axios invés de fetch (Pesquisar mais sobre)
+O axios converte para .Json() automaticamente, então um código que seria assim:
+    const link = await fetch(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+    const data = await link.json();
+será assim:
+    const link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+*/
 
 const data = new SlashCommandBuilder()
 	.setName('pokedex')
@@ -46,7 +53,7 @@ module.exports = {
         const resposta = interaction.options.getString("pokémon");
         const pokemon = resposta.toLowerCase();
         const shiny = interaction.options.getBoolean('shiny');
-        const link = await fetch(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+        const link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
 
         //manipulando imagem de erro
         const canvas = Canvas.createCanvas(700, 250);
@@ -74,7 +81,7 @@ module.exports = {
             await interaction.reply({content: `Pokémon não encontrado!`, 
                  files: [attachment], ephemeral: true});
         } else {
-            const data = await link.json();
+            const data = await link.data; //Só para não reescrever o código, usando a váriavel "link" + .data também funcionaria
             const id = data.id;
             const height = data.height / 10;
             const weight = data.weight / 10;
