@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-
-const bot = require('../config.json');
+require('dotenv').config();
+//const bot = require('../config.json'); add .env
 const { pokemonList1, pokemonList2, pokemonList3 } = require('../Events/lista');
 const wait = require('node:timers/promises').setTimeout;
 
@@ -38,7 +38,7 @@ module.exports = {
             .setColor('#FF0043')
             .setTitle('Pokédex')
             .setURL('https://pokedexwi.netlify.app/')
-            .setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
+            .setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${process.env.CLIENT_ID}/${process.env.AVATAR_CLIENT}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
             //.setThumbnail('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif')
             .addFields(
                 { name: 'Essa lista ainda não está em sua versão final!', value: ` `},

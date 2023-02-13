@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder } = require('discord.js');
 const Canvas = require('@napi-rs/canvas');
-//const bot = require('../config.json')
 const chalk = require('chalk');  //apenas para estilizar//
 
 const data = new SlashCommandBuilder()
@@ -126,7 +125,7 @@ module.exports = {
                     .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
-                    //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
+                    //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${process.env.CLIENT_ID}/${process.env.AVATAR_CLIENT}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
                     .setThumbnail(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`)
                     .addFields(
                         { name: `${estilizaNome(data.name)}`, value: `Número: ${id}\nAltura: ${height.toFixed(1)} m\nPeso: ${weight.toFixed(1)} kg` }
@@ -143,7 +142,6 @@ module.exports = {
                     .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
-                    //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
                     .setThumbnail(`https://68.media.tumblr.com/e0bac3a565ceb39f1b55b913765a2cc7/tumblr_inline_nwf8c2J5NL1sp8z39_500.gif`)
                     .addFields(
                         { name: `${estilizaNome(data.name)}`, value: `Número: ${id}\nAltura: ${height.toFixed(1)} m\nPeso: ${weight.toFixed(1)} kg` }
@@ -159,7 +157,6 @@ module.exports = {
                     .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
-                    //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
                     .setThumbnail(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`)
                     .addFields(
                         { name: `${estilizaNome(data.name)}`, value: `Número: #${id}\nAltura: ${height.toFixed(1)} m\nPeso: ${weight.toFixed(1)} kg` }
@@ -174,7 +171,6 @@ module.exports = {
                     .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
-                    //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
                     .setThumbnail(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/${id}.gif`)
                     .addFields(
                         { name: `${estilizaNome(data.name)}`, value: `Número: #${id}\nAltura: ${height.toFixed(1)} m\nPeso: ${weight.toFixed(1)} kg` }
@@ -190,7 +186,6 @@ module.exports = {
                     .setColor(`${color}`)
                     .setTitle('Pokédex')
                     .setURL('https://pokedexwi.netlify.app/')
-                    //.setAuthor({ name: 'Etram#1391', iconURL: `https://cdn.discordapp.com/app-icons/${bot.clientId}/${bot.avatarClient}.png`, url: 'https://discord.com/api/oauth2/authorize?client_id=1065838867485302854&permissions=8&scope=bot' })
                     .setThumbnail(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`)
                     .addFields(
                         { name: `${estilizaNome(data.name)}`, value: `Número: #${id}\nAltura: ${height.toFixed(1)} m\nPeso: ${weight.toFixed(1)} kg` }
@@ -206,5 +201,3 @@ module.exports = {
         }
     },
 }
-//await interaction.reply(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/shiny/6.gif`)
-//"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif";

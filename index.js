@@ -1,11 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const chalk = require('chalk');  //apenas para estilizar//
-//const { token } = require('./config.json');
+require('dotenv').config();
+
+const token = process.env.TOKEN_BOT;
 
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const config = require("./config.json");
+//const config = require("./config.json"); Arrumando o código com .env
 
 client.on(Events.ClientReady, () => {
     console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
@@ -35,7 +37,7 @@ client.on(Events.ChannelCreate, canal => {
 	console.log("teste top");
 })*/ //Apenas para testes
 
-client.login(config.token);
+client.login(token);
 
 client.commands = new Collection();
 

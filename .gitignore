@@ -5,3 +5,4 @@ Events
 .eslintrc.json
 .vscode
 LICENSE
+.env
