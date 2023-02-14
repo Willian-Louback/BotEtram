@@ -53,7 +53,13 @@ module.exports = {
         const resposta = interaction.options.getString("pokémon");
         const pokemon = resposta.toLowerCase();
         const shiny = interaction.options.getBoolean('shiny');
-        const link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+        let link;
+        try{
+            link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+        } catch (err){
+            link = err.response;
+        }
+        
 
         //manipulando imagem de erro
         const canvas = Canvas.createCanvas(700, 250);
