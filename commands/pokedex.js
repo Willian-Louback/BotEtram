@@ -75,6 +75,8 @@ module.exports = {
         //fim da manipulação de imagem
 
         if(link.status != 200){
+            //const canal = client.channels.cache.get("1075515530166947900");
+            //canal.send(`[Error] Pokémon não encontrado!\nProcura do usuário: ${resposta}.\nUsuário: ${interaction.user.username}.\n`)
             console.log(chalk.redBright("--------------------------------------------------"));
             console.log(chalk.red(`[Error] Pokémon não encontrado!\n`)+
             chalk.magenta(`Procura do usuário:`), chalk.cyan(`"${resposta}".\n`)+

@@ -12,24 +12,35 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.on(Events.ClientReady, () => {
     console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
+	const canal = client.channels.cache.get("1075506855595495505");
+	canal.send(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`);
+	//console.log(client.guilds.cache); interessante
 });
 
 client.on(Events.GuildCreate, guild => {
     console.log(chalk.magenta(`Bot entrou no servidor: "${guild.name}".`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
+	const canal = client.channels.cache.get("1075507143693848616");
+	canal.send(`Bot entrou no servidor: "${guild.name}".`);
 });
 
 client.on(Events.GuildDelete, guild => {
     console.log(chalk.magenta(`O bot foi removido do servidor: "${guild.name}".`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
+	const canal = client.channels.cache.get("1075507143693848616");
+	canal.send(`O bot foi removido do servidor: "${guild.name}".`);
 });
 
 client.on(Events.ChannelDelete, canal => {
-    console.log(chalk.blue(`O canal foi deletado: "${canal.name}".`));
+    console.log(chalk.blue(`O canal foi deletado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`));
+	const canalLog = client.channels.cache.get("1075507143693848616");
+	canalLog.send(`O canal foi deletado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`);
 });
 
 client.on(Events.ChannelCreate, canal => {
-    console.log(chalk.blue(`O canal foi criado: "${canal.name}".`));
+    console.log(chalk.blue(`O canal foi criado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`));
+	const canalLog = client.channels.cache.get("1075507143693848616");
+	canalLog.send(`O canal foi criado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`);
 });
 
 /*client.on(Events.InteractionCreate, () => {
