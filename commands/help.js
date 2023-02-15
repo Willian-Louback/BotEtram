@@ -33,6 +33,11 @@ module.exports = {
             });
           await interaction.deferReply({ephemeral: true});
           await wait (7000);
+          let verificaGif = interaction.user.avatar.indexOf("_"); //avatares com gif começam com a_
+          let extensao = ".png";
+          if(verificaGif == 1){
+            extensao = ".gif";
+          }
           const embedPokemon = new EmbedBuilder()
               .setColor('#FF0043')
               .setTitle('Pokédex')
@@ -45,8 +50,8 @@ module.exports = {
                   { name: ' ', value: `${lista2}`, inline: true },
                   { name: ' ', value: `${lista3}`, inline: true }
               )
-              //.setTimestamp()
-              //.setFooter({ text: `${interaction.user.username}`, iconURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif' });
+              .setTimestamp()
+              .setFooter({ text: `${interaction.user.username}#${interaction.user.discriminator}`, iconURL: `https://cdn.discordapp.com/avatars/${interaction.user.id}/${interaction.user.avatar}${extensao}` });
           await interaction.editReply({embeds: [embedPokemon], ephemeral: true});
         }
     },

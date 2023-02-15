@@ -11,18 +11,17 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on(Events.ClientReady, () => {
     console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
-    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es)`);
-    //myfunction();
+    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
 });
 
 client.on(Events.GuildCreate, guild => {
     console.log(chalk.magenta(`Bot entrou no servidor: "${guild.name}".`));
-    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es)`);
+    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
 });
 
 client.on(Events.GuildDelete, guild => {
     console.log(chalk.magenta(`O bot foi removido do servidor: "${guild.name}".`));
-    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es)`);
+    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
 });
 
 client.on(Events.ChannelDelete, canal => {
