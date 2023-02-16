@@ -3,10 +3,10 @@ const Canvas = require('@napi-rs/canvas');
 const chalk = require('chalk');  //apenas para estilizar//
 const axios = require('axios'); /*atualizando para axios invés de fetch (Pesquisar mais sobre)
 O axios converte para .Json() automaticamente, então um código que seria assim:
-    const link = await fetch(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+    const link = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}`);
     const data = await link.json();
 será assim:
-    const link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+    const link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}`);
 */
 
 const data = new SlashCommandBuilder()
@@ -53,13 +53,19 @@ module.exports = {
         const resposta = interaction.options.getString("pokémon");
         const pokemon = resposta.toLowerCase();
         const shiny = interaction.options.getBoolean('shiny');
+        const pokemonFiltrado = filtrarResposta(pokemon);
         let link;
         try{
-            link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}`);
+            link = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}`);
         } catch (err){
-            link = err.response;
+            link = await err.response;
         }
-        
+        module.exports = {
+            resposta,
+            pokemonFiltrado,
+            link,
+            shiny
+        }
 
         //manipulando imagem de erro
         const canvas = Canvas.createCanvas(700, 250);
@@ -75,13 +81,12 @@ module.exports = {
         //fim da manipulação de imagem
 
         if(link.status != 200){
-            //const canal = client.channels.cache.get("1075515530166947900");
-            //canal.send(`[Error] Pokémon não encontrado!\nProcura do usuário: ${resposta}.\nUsuário: ${interaction.user.username}.\n`)
             console.log(chalk.redBright("--------------------------------------------------"));
             console.log(chalk.red(`[Error] Pokémon não encontrado!\n`)+
-            chalk.magenta(`Procura do usuário:`), chalk.cyan(`"${resposta}".\n`)+
-            chalk.magenta(`Usuário:`), chalk.cyan(`"${interaction.user.username}".\n`)+
-            chalk.magenta(`Link:`), chalk.cyan(`"https://pokeapi.co/api/v2/pokemon/${filtrarResposta(pokemon)}".\n`)+
+            chalk.magenta(`Usuário:`), chalk.cyan(`${interaction.user.username}.\n`)+
+            chalk.magenta(`Servidor:`), chalk.cyan(`${interaction.guild.name}.\n`)+
+            chalk.magenta(`Procura do usuário:`), chalk.cyan(`${resposta}.\n`)+
+            chalk.magenta(`Link:`), chalk.cyan(`https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}.\n`)+
             chalk.magenta(`Código do erro:`), chalk.cyan(`${link.status}.\n`)+
             chalk.magenta(`Texto do erro:`), chalk.cyan(`${link.statusText}.\n`)+
             chalk.magenta(`Shiny:`), chalk.cyan(`${shiny}.`));

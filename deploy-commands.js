@@ -2,6 +2,7 @@ const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 //const { clientId, guildId, token } = require('./config.json'); ARRUMANDO CÓDIGO
 const clientId = process.env.CLIENT_ID;
+// eslint-disable-next-line no-unused-vars
 const guildId = process.env.GUILD_ID;
 const token = process.env.TOKEN_BOT;
 const fs = require('node:fs');

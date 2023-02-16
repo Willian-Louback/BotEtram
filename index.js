@@ -1,51 +1,66 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const chalk = require('chalk');  //apenas para estilizar//
-require('dotenv').config();
-
-const token = process.env.TOKEN_BOT;
-
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-//const config = require("./config.json"); Arrumando o código com .env
+
+const chalk = require('chalk');  //apenas para estilizar//
+
+require('dotenv').config();
+const token = process.env.TOKEN_BOT;
+const config = require("./config.json");
+
+//const { apagaDeploy, apagaInfo, apagaCommands } = require('./others/deletar');
 
 client.on(Events.ClientReady, () => {
     console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
-	const canal = client.channels.cache.get("1075506855595495505");
+	const canal = client.channels.cache.get(config.id_logs_deploy);
 	canal.send(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`);
 	//console.log(client.guilds.cache); interessante
+
+	/*setInterval(() => {
+		const now = new Date();
+		if (now.getHours() === 17 && now.setMinutes(9)) {
+			console.log(apagaDeploy),
+			apagaInfo
+		}
+		console.log("verificado");
+	}, 5000);*/
 });
 
 client.on(Events.GuildCreate, guild => {
-    console.log(chalk.magenta(`Bot entrou no servidor: "${guild.name}".`));
+    console.log(chalk.magenta(`Bot entrou no servidor: ${guild.name}.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
-	const canal = client.channels.cache.get("1075507143693848616");
-	canal.send(`Bot entrou no servidor: "${guild.name}".`);
+	const canal = client.channels.cache.get(config.id_logs_info);
+	canal.send("--------------------------------------------------");
+	canal.send(`Bot entrou no servidor: ${guild.name}.`);
+	canal.send("--------------------------------------------------");
 });
 
 client.on(Events.GuildDelete, guild => {
-    console.log(chalk.magenta(`O bot foi removido do servidor: "${guild.name}".`));
+    console.log(chalk.magenta(`O bot foi removido do servidor: ${guild.name}.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
-	const canal = client.channels.cache.get("1075507143693848616");
-	canal.send(`O bot foi removido do servidor: "${guild.name}".`);
+	const canal = client.channels.cache.get();
+	canal.send("--------------------------------------------------");
+	canal.send(`O bot foi removido do servidor: ${guild.name}.`);
+	canal.send("--------------------------------------------------");
 });
 
 client.on(Events.ChannelDelete, canal => {
-    console.log(chalk.blue(`O canal foi deletado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`));
+    console.log(chalk.blue(`O canal foi deletado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`));
 	const canalLog = client.channels.cache.get("1075507143693848616");
-	canalLog.send(`O canal foi deletado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`);
+	canalLog.send("--------------------------------------------------");
+	canalLog.send(`O canal foi deletado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`);
+	canalLog.send("--------------------------------------------------");
 });
 
 client.on(Events.ChannelCreate, canal => {
-    console.log(chalk.blue(`O canal foi criado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`));
+    console.log(chalk.blue(`O canal foi criado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`));
 	const canalLog = client.channels.cache.get("1075507143693848616");
-	canalLog.send(`O canal foi criado: "${canal.name}".\nNome do servidor: ${canal.guild.name}`);
+	canalLog.send("--------------------------------------------------");
+	canalLog.send(`O canal foi criado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`);
+	canalLog.send("--------------------------------------------------");
 });
-
-/*client.on(Events.InteractionCreate, () => {
-	console.log("teste top");
-})*/ //Apenas para testes
 
 client.login(token);
 
@@ -66,25 +81,33 @@ for (const file of commandFiles) {
 }
 
 /*const wait = require('node:timers/promises').setTimeout;*/
-
 client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
 	
 	const command = interaction.client.commands.get(interaction.commandName);
 
-	/*if (interaction.commandName === 'ping') {
-		await interaction.reply('Pong!');
-		await wait(2000);
-		await interaction.editReply('Pong again!');
-	}*/							//Só para agilizar caso eu precise.
-
 	if (!command) {
-		console.error(chalk.redBright(`Nenhum comando correspondente à "${interaction.commandName}" foi encontrado.`));
+		console.error(chalk.redBright(`Nenhum comando correspondente à ${interaction.commandName} foi encontrado.`));
 		return;
 	}
-
+	
 	try {
 		await command.execute(interaction);
+		// eslint-disable-next-line no-unused-vars
+		const {resposta, pokemonFiltrado, link, shiny} = require('./commands/pokedex');
+		if(command.data.name === 'pokedex' && link.status != 200){
+			const canal = client.channels.cache.get("1075515530166947900");
+			canal.send("--------------------------------------------------");
+			canal.send(`[Error] Pokémon não encontrado!\n`+
+			`Usuário: ${interaction.user.username}.\n`+
+			`Servidor: ${interaction.guild.name}.\n`+
+			`Procura do usuário: ${resposta}.\n`+
+			//`Link: https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}.\n`+
+			`Código do erro: ${link.status}.\n`+
+			`Texto do erro: ${link.statusText}.\n`+
+			`Shiny: ${shiny}.`);
+			canal.send("--------------------------------------------------");
+		}
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'Ocorreu um erro ao executar este comando!', ephemeral: true });
