@@ -7,14 +7,13 @@ const chalk = require('chalk');  //apenas para estilizar//
 
 require('dotenv').config();
 const token = process.env.TOKEN_BOT;
-const config = require("./config.json");
 
 //const { apagaDeploy, apagaInfo, apagaCommands } = require('./others/deletar');
 
 client.on(Events.ClientReady, () => {
     console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
-	const canal = client.channels.cache.get(config.id_logs_deploy);
+	const canal = client.channels.cache.get(process.env.ID_LOGS_DEPLOY);
 	canal.send(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`);
 	//console.log(client.guilds.cache); interessante
 
@@ -31,7 +30,7 @@ client.on(Events.ClientReady, () => {
 client.on(Events.GuildCreate, guild => {
     console.log(chalk.magenta(`Bot entrou no servidor: ${guild.name}.`));
     client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
-	const canal = client.channels.cache.get(config.id_logs_info);
+	const canal = client.channels.cache.get(process.env.ID_LOGS_INFO);
 	canal.send("--------------------------------------------------");
 	canal.send(`Bot entrou no servidor: ${guild.name}.`);
 	canal.send("--------------------------------------------------");
