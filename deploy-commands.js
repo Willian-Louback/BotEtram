@@ -1,10 +1,8 @@
 const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 //const { clientId, guildId, token } = require('./config.json'); ARRUMANDO CÓDIGO
-const clientId = process.env.CLIENT_ID;
 // eslint-disable-next-line no-unused-vars
-const guildId = process.env.GUILD_ID;
-const token = process.env.TOKEN_BOT;
+const { CLIENT_ID, TOKEN_BOT, GUILD_ID } = process.env;
 const fs = require('node:fs');
 const chalk = require('chalk'); //apenas para estilizar//
 
@@ -19,7 +17,7 @@ for (const file of commandFiles) {
 }
 
 // Construct and prepare an instance of the REST module
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(TOKEN_BOT);
 
 // and deploy your commands!
 (async () => {
@@ -28,7 +26,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(
-			Routes.applicationCommands(clientId),
+			Routes.applicationCommands(CLIENT_ID),
 			{ body: commands }
 		);
 

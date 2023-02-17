@@ -1,31 +1,37 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const chalk = require('chalk');  //apenas para estilizar//
 
 require('dotenv').config();
-const token = process.env.TOKEN_BOT;
 
-//const { apagaDeploy, apagaInfo, apagaCommands } = require('./others/deletar');
+//const apagaTudo = require('./others/deletar');
 
 client.on(Events.ClientReady, () => {
     console.log(chalk.greenBright(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`));
-    client.user.setActivity(`Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`);
+    client.user.setPresence({ activities: [{name: `Eu estou em ${client.guilds.cache.size} servidor(es). Experimente usar o comando "/Pokedex"!`, type: ActivityType.Playing }], status: 'online' });
 	const canal = client.channels.cache.get(process.env.ID_LOGS_DEPLOY);
 	canal.send(`Bot foi iniciado, com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais, em ${client.guilds.cache.size} servidores.`);
 	//console.log(client.guilds.cache); interessante
-
-	/*setInterval(() => {
-		const now = new Date();
-		if (now.getHours() === 17 && now.setMinutes(9)) {
-			console.log(apagaDeploy),
-			apagaInfo
-		}
-		console.log("verificado");
-	}, 5000);*/
 });
+
+/*setInterval(() => {
+	const now = new Date();
+	if (now.getHours() === 17 && now.setMinutes(9)) {
+		console.log(apagaTudo())
+		apagaTudo;
+		const canalDeploy = client.channels.cache.get(process.env.ID_LOGS_DEPLOY);
+		canalDeploy.messages.fetch()
+        .then((mensagens) => {
+            canalDeploy.bulkDelete(mensagens);
+            console.log(chalk.yellow(`Foram apagadas ${mensagens.size} mensagens! No canal ${canalDeploy.name}.`));
+            canalDeploy.send("Mensagens Apagadas!");
+        })
+	}
+	console.log("verificado");
+}, 5000);*/
 
 client.on(Events.GuildCreate, guild => {
     console.log(chalk.magenta(`Bot entrou no servidor: ${guild.name}.`));
@@ -61,7 +67,7 @@ client.on(Events.ChannelCreate, canal => {
 	canalLog.send("--------------------------------------------------");
 });
 
-client.login(token);
+client.login(process.env.TOKEN_BOT);
 
 client.commands = new Collection();
 
