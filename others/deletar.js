@@ -8,7 +8,7 @@ const client = new Client({
 });
 const chalk = require('chalk');
 
-require('dotenv').config();
+require('dotenv').config({ path: './secure/.env' });
 
 const { ID_LOGS_DEPLOY, ID_LOGS_INFO, ID_LOGS_COMMANDS } = process.env;
 function apagaTudo(){

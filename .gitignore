@@ -4,5 +4,5 @@ config.json
 Events
 .eslintrc.json
 .vscode
-LICENSE
 .env
+secure

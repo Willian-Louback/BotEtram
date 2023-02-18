@@ -5,7 +5,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const chalk = require('chalk');  //apenas para estilizar//
 
-require('dotenv').config();
+require('dotenv').config({ path: './secure/.env' });
 
 //const apagaTudo = require('./others/deletar');
 
@@ -53,7 +53,7 @@ client.on(Events.GuildDelete, guild => {
 
 client.on(Events.ChannelDelete, canal => {
     console.log(chalk.blue(`O canal foi deletado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`));
-	const canalLog = client.channels.cache.get("1075507143693848616");
+	const canalLog = client.channels.cache.get(process.env.ID_LOGS_INFO);
 	canalLog.send("--------------------------------------------------");
 	canalLog.send(`O canal foi deletado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`);
 	canalLog.send("--------------------------------------------------");
@@ -61,7 +61,7 @@ client.on(Events.ChannelDelete, canal => {
 
 client.on(Events.ChannelCreate, canal => {
     console.log(chalk.blue(`O canal foi criado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`));
-	const canalLog = client.channels.cache.get("1075507143693848616");
+	const canalLog = client.channels.cache.get(process.env.ID_LOGS_INFO);
 	canalLog.send("--------------------------------------------------");
 	canalLog.send(`O canal foi criado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`);
 	canalLog.send("--------------------------------------------------");

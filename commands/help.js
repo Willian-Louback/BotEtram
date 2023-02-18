@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-require('dotenv').config();
+require('dotenv').config({ path: './secure/.env' });
 const { pokemonList1, pokemonList2, pokemonList3 } = require('../others/lista');
 const wait = require('node:timers/promises').setTimeout;
 

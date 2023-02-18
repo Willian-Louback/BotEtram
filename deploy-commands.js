@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-require('dotenv').config();
+require('dotenv').config({ path: './secure/.env' });
 //const { clientId, guildId, token } = require('./config.json'); ARRUMANDO CÓDIGO
 // eslint-disable-next-line no-unused-vars
 const { CLIENT_ID, TOKEN_BOT, GUILD_ID } = process.env;
