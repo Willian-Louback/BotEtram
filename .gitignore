@@ -1,7 +1,6 @@
 tests
 node_modules
 config.json
-Events
 .eslintrc.json
 .vscode
 .env
