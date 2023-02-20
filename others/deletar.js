@@ -8,7 +8,7 @@ function apagaTudo(){
         const canalDeploy = client.channels.cache.get(ID_LOGS_DEPLOY);
         const apagaDeploy = canalDeploy.messages.fetch()
         .then((mensagens) => {
-            if(mensagens.size <= 12){
+            if(mensagens.size <= 120){
                 canalDeploy.bulkDelete(mensagens);
                 console.log(chalk.yellow(`Foram apagadas ${mensagens.size} mensagens! No canal ${canalDeploy.name}.`));
                 canalDeploy.send(`Foram apagadas ${mensagens.size} mensagens! No canal ${canalDeploy.name}.`);
@@ -19,8 +19,8 @@ function apagaTudo(){
         const canalInfo = client.channels.cache.get(ID_LOGS_INFO);
         const apagaInfo = canalInfo.messages.fetch()
         .then((mensagens) => {
-            if(mensagens.size <= 30){
-                canalCommands.bulkDelete(mensagens);
+            if(mensagens.size <= 300){
+                canalInfo.bulkDelete(mensagens);
                 console.log(chalk.yellow(`Foram apagadas ${mensagens.size} mensagens! No canal ${canalInfo.name}.`));
                 canalInfo.send(`Foram apagadas ${mensagens.size} mensagens! No canal ${canalInfo.name}.`);
             }
@@ -37,7 +37,7 @@ function apagaTudo(){
             }
         })
         .catch(console.error);
-        return apagaCommands, apagaDeploy, apagaInfo;
+        return apagaDeploy, apagaInfo, apagaCommands;
     }
 module.exports = apagaTudo;
 

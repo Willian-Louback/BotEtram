@@ -16,16 +16,16 @@ client.on(Events.ClientReady, () => {
 		module.exports = client;
 		const apagaTudo = require('./others/deletar');
 		module.exports.apagaTudo = apagaTudo;
-	}
+	}	
 });
 
 setInterval(() => {
 	const now = new Date();
-	if (now.getHours() === 22) {
+	//if (now.getHours() === 2) {
 		module.exports.apagaTudo();
-	}
+	//}
 	console.log(chalk.blue(`Verificação concluída! Horário: ${now.getHours()}:${now.getMinutes()}.`));
-}, 5000000);
+}, 86400000);
 
 client.on(Events.GuildCreate, guild => {
     console.log(chalk.magenta(`Bot entrou no servidor: ${guild.name}.`));
@@ -60,8 +60,6 @@ client.on(Events.ChannelCreate, canal => {
 	canalLog.send(`O canal foi criado: ${canal.name}.\nNome do servidor: ${canal.guild.name}`);
 	canalLog.send("--------------------------------------------------");
 });
-
-client.login(process.env.TOKEN_BOT);
 
 client.commands = new Collection();
 
@@ -112,3 +110,5 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'Ocorreu um erro ao executar este comando!', ephemeral: true });
 	}
 });
+
+client.login(process.env.TOKEN_BOT);
