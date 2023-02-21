@@ -28,7 +28,7 @@ module.exports = {
 				`Usuário: ${interaction.user.username}.\n`+
 				`Servidor: ${interaction.guild.name}.\n`+
 				`Procura do usuário: ${resposta}.\n`+
-				//`Link: https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}.\n`+
+				//`Link: https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}\n`+
 				`Código do erro: ${link.status}.\n`+
 				`Texto do erro: ${link.statusText}.\n`+
 				`Shiny: ${shiny}.`);

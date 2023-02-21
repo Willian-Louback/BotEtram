@@ -86,7 +86,7 @@ module.exports = {
             chalk.magenta(`Usuário:`), chalk.cyan(`${interaction.user.username}.\n`)+
             chalk.magenta(`Servidor:`), chalk.cyan(`${interaction.guild.name}.\n`)+
             chalk.magenta(`Procura do usuário:`), chalk.cyan(`${resposta}.\n`)+
-            chalk.magenta(`Link:`), chalk.cyan(`https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}.\n`)+
+            chalk.magenta(`Link:`), chalk.cyan(`https://pokeapi.co/api/v2/pokemon/${pokemonFiltrado}\n`)+
             chalk.magenta(`Código do erro:`), chalk.cyan(`${link.status}.\n`)+
             chalk.magenta(`Texto do erro:`), chalk.cyan(`${link.statusText}.\n`)+
             chalk.magenta(`Shiny:`), chalk.cyan(`${shiny}.`));
