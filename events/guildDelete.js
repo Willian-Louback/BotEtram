@@ -2,8 +2,6 @@ const { Events, ActivityType } = require('discord.js');
 
 const chalk = require('chalk');  //apenas para estilizar//
 
-require('dotenv').config({ path: '../secure/.env' });
-
 module.exports = {
     name: Events.GuildDelete,
     execute(guild){
