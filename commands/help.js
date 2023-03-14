@@ -30,7 +30,7 @@ module.exports = {
               lista3 = pokemonList;
             });
           await interaction.deferReply({ephemeral: true});
-          await wait (7000);
+          await wait (10000);
           let verificaGif = interaction.user.avatar.indexOf("_"); //avatares com gif começam com a_
           let extensao = ".png";
           if(verificaGif == 1){
