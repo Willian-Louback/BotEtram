@@ -11,7 +11,8 @@
     "start": "node .",
     "lint": "eslint .",
     "dev": "nodemon .",
-    "build": "node deploy-commands.js"
+    "build": "node deploy-commands.js",
+    "check": "node check.js"
   },
   "keywords": [],
   "author": "Willian Louback",
