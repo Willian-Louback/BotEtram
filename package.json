@@ -9,7 +9,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
-    "poststart": "echo 'Build concluida com sucesso!'",
     "lint": "eslint .",
     "dev": "nodemon .",
     "build": "node deploy-commands.js"
