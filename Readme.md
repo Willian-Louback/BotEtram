@@ -12,7 +12,6 @@ Se você está procurando um bot interativo e divertido para o seu servidor do D
 
 Então, adicione Etram ao seu servidor hoje mesmo e mergulhe na empolgante jornada Pokémon com seus amigos no Discord!
 
-É importante mencionar que o bot Etram também possui uma página no site top.gg. A página do Etram no top.gg oferece mais informações sobre o bot, incluindo recursos, estatísticas, avaliações e comentários dos usuários.
+É importante mencionar que o bot Etram também possui uma página no site [top.gg](https://top.gg/bot/1065838867485302854). A página do Etram no [top.gg](https://top.gg/bot/1065838867485302854) oferece mais informações sobre o bot, incluindo recursos, estatísticas, avaliações e comentários dos usuários.
 
-[Link do top.gg](https://top.gg/bot/1065838867485302854)
 [Link de convite do bot](https://discord.com/oauth2/authorize?client_id=1065838867485302854&permissions=2147534848&scope=bot)
