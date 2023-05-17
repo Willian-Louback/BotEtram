@@ -4,7 +4,7 @@ Etram é um bot interessante que foi desenvolvido para adicionar diversão e fun
 
 Este bot tem uma série de comandos legais à disposição, mas um dos mais empolgantes é o comando "/pokedex". Com esse comando, os usuários podem escolher qualquer Pokémon e o bot exibirá um gif animado do Pokémon selecionado, além de fornecer algumas informações sobre ele.
 
-Os dados do Pokémon são obtidos diretamente da API de Pokémon chamada "pokeapi.co". Essa API confiável e abrangente fornece informações detalhadas sobre os diversos Pokémons existentes, incluindo estatísticas, tipos, habilidades e muito mais. Graças a essa integração com a pokeapi.co, Etram pode fornecer uma experiência divertida e informativa para os fãs de Pokémon.
+Os dados do Pokémon são obtidos diretamente da API de Pokémon chamada [pokeapi.co](https://pokeapi.co/). Essa API confiável e abrangente fornece informações detalhadas sobre os diversos Pokémons existentes, incluindo estatísticas, tipos, habilidades e muito mais. Graças a essa integração com a [pokeapi.co](https://pokeapi.co/), Etram pode fornecer uma experiência divertida e informativa para os fãs de Pokémon.
 
 Além disso, vale mencionar que Etram está hospedado na plataforma railway.app. Essa plataforma de hospedagem é conhecida por sua confiabilidade e facilidade de uso, garantindo que o bot esteja sempre disponível e pronto para atender aos comandos dos usuários do Discord. (Isso se não levarmos em consideração as horas gratuitas que a plataforma oferece kkkkk)
 
