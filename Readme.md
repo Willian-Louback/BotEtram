@@ -15,5 +15,4 @@ Então, adicione Etram ao seu servidor hoje mesmo e mergulhe na empolgante jorna
 É importante mencionar que o bot Etram também possui uma página no site top.gg. A página do Etram no top.gg oferece mais informações sobre o bot, incluindo recursos, estatísticas, avaliações e comentários dos usuários.
 
 [Link do top.gg](https://top.gg/bot/1065838867485302854)
-
 [Link de convite do bot](https://discord.com/oauth2/authorize?client_id=1065838867485302854&permissions=2147534848&scope=bot)
