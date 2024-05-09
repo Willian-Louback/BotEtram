@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -15,7 +16,7 @@ setInterval(() => {
 	console.log(chalk.blue(`Verificação concluída! Horário: ${now.getHours()}:${now.getMinutes()}.`));
 }, 86400000);
 
-//Puxando comandos 
+//Puxando comandos
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'commands');
@@ -46,3 +47,11 @@ for (const file of eventFiles) {
 }
 
 client.login(process.env.TOKEN_BOT);
+
+// feedback que a aplicação subiu
+
+const app = express();
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => console.log("Servidor online"));
